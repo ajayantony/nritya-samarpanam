@@ -114,6 +114,9 @@ function initMusicPlayer() {
     isPlaying = state;
     musicIcon.textContent = state ? '🔊' : '🔇';
     if (prompt) prompt.style.display = state ? 'none' : 'block';
+    musicBtn.style.boxShadow = state
+      ? '0 0 25px rgba(201,168,76,0.7)'
+      : '0 0 20px rgba(201,168,76,0.4)';
   }
 
   // Attempt autoplay
@@ -133,8 +136,9 @@ function initMusicPlayer() {
       audio.pause();
       setPlaying(false);
     } else {
-      audio.play();
-      setPlaying(true);
+      audio.play()
+        .then(() => setPlaying(true))
+        .catch(() => setPlaying(false));
     }
   });
 }

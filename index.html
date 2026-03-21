@@ -62,14 +62,16 @@
 
 <!-- ── Background Music ──────────────────────────────────────── -->
 <!--
-  REPLACE: add your Carnatic music MP3 file to assets/music/background.mp3
-  or point the src below to a hosted audio URL.
+  REPLACE: When you have a real Carnatic music file, upload it somewhere
+  (e.g. GitHub, Google Drive public link, or your own server) and replace
+  the src URL below with that link.
+  The current src is a free placeholder track for layout testing.
 -->
-<audio id="bgMusic" loop preload="none">
-  <source src="assets/music/background.mp3" type="audio/mpeg" />
+<audio id="bgMusic" loop preload="auto">
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg" />
 </audio>
 <div class="music-player">
-  <div class="music-prompt" id="musicPrompt" style="display:none">Click to play music ♪</div>
+  <div class="music-prompt" id="musicPrompt">Click to play music ♪</div>
   <button class="music-btn" id="musicBtn" aria-label="Toggle music">
     <span id="musicIcon">🔇</span>
   </button>
