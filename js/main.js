@@ -119,6 +119,9 @@ function initMusicPlayer() {
       : '0 0 20px rgba(201,168,76,0.4)';
   }
 
+  // Start 10 seconds into the track
+  audio.currentTime = 10;
+
   // Attempt autoplay
   const playPromise = audio.play();
   if (playPromise !== undefined) {
