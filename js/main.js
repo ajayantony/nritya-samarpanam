@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const now  = new Date();
       const diff = eventDate - now;
       if (diff <= 0) {
-        countdownEl.innerHTML = '<p class="subtitle">The performance has begun!</p>';
+        countdownEl.textContent = 'The performance has begun!';
         return;
       }
       const days  = Math.floor(diff / (1000 * 60 * 60 * 24));
