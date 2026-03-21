@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anitha &amp; Sreyoshi — Nritya Samarpanam 2026</title>
+  <meta name="description" content="A Bharatanatyam graduation recital by Anitha and Sreyoshi. April 18, 2026 at the Indian Community Center." />
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- AOS Animations -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <!-- GLightbox -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+</head>
+<body>
+
+<!-- ── Navbar ────────────────────────────────────────────────── -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="navbar-brand">
+      Nritya Samarpanam
+      <span>Anitha &amp; Sreyoshi · 2026</span>
+    </a>
+    <ul class="navbar-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="anitha.html">Anitha</a></li>
+      <li><a href="sreyoshi.html">Sreyoshi</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="teacher.html">Our Guru</a></li>
+      <li><a href="venue.html">Venue &amp; RSVP</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ── Hero ──────────────────────────────────────────────────── -->
+<section class="hero">
+  <!-- REPLACE: swap these image URLs with photos of Anitha and Sreyoshi -->
+  <div class="hero-slide" style="background-image: url('https://picsum.photos/seed/dancer-anitha/1920/1080')"></div>
+  <div class="hero-slide" style="background-image: url('https://picsum.photos/seed/dancer-sreyoshi/1920/1080')"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">A Bharatanatyam Arangetram</p>
+    <h1 class="hero-title">Nritya <em>Samarpanam</em></h1>
+    <p class="hero-subtitle">Anitha &amp; Sreyoshi</p>
+    <p class="hero-meta">
+      April 18, 2026
+      <span class="sep">·</span>
+      2:00 PM
+      <span class="sep">·</span>
+      Indian Community Center
+    </p>
+    <div class="hero-buttons">
+      <!-- REPLACE: set href to your actual RSVP link -->
+      <a href="#" target="_blank" rel="noopener" class="btn btn-primary">RSVP Now</a>
+      <a href="venue.html" class="btn btn-outline">Venue Details</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Background Music ──────────────────────────────────────── -->
+<!--
+  REPLACE: add your Carnatic music MP3 file to assets/music/background.mp3
+  or point the src below to a hosted audio URL.
+-->
+<audio id="bgMusic" loop preload="none">
+  <source src="assets/music/background.mp3" type="audio/mpeg" />
+</audio>
+<div class="music-player">
+  <div class="music-prompt" id="musicPrompt" style="display:none">Click to play music ♪</div>
+  <button class="music-btn" id="musicBtn" aria-label="Toggle music">
+    <span id="musicIcon">🔇</span>
+  </button>
+</div>
+
+<!-- ── Countdown ─────────────────────────────────────────────── -->
+<div class="countdown-section">
+  <p class="subtitle">Counting down to the performance</p>
+  <div class="countdown-grid" id="countdown">
+    <div class="countdown-unit">
+      <span class="countdown-number" id="cd-days">--</span>
+      <span class="countdown-label">Days</span>
+    </div>
+    <div class="countdown-unit">
+      <span class="countdown-number" id="cd-hours">--</span>
+      <span class="countdown-label">Hours</span>
+    </div>
+    <div class="countdown-unit">
+      <span class="countdown-number" id="cd-mins">--</span>
+      <span class="countdown-label">Minutes</span>
+    </div>
+    <div class="countdown-unit">
+      <span class="countdown-number" id="cd-secs">--</span>
+      <span class="countdown-label">Seconds</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── About the Dancers ──────────────────────────────────────── -->
+<section class="section">
+  <h2 class="section-title" data-aos="fade-up">The Dancers</h2>
+  <div class="section-divider" data-aos="fade-up" data-aos-delay="100"></div>
+  <div class="dancers-grid">
+    <div class="dancer-card" data-aos="fade-up" data-aos-delay="150">
+      <!-- REPLACE: Anitha's portrait photo -->
+      <img class="dancer-card-img" src="https://picsum.photos/seed/anitha-portrait/600/800" alt="Anitha" loading="lazy" />
+      <div class="dancer-card-body">
+        <h3>Anitha</h3>
+        <p class="subtitle">Bharatanatyam Dancer</p>
+        <div class="divider"><span class="divider-icon">✦</span></div>
+        <p>Anitha began her journey in Bharatanatyam at the age of seven and has dedicated over a decade to mastering this ancient classical art form under the guidance of her guru.</p>
+        <a href="anitha.html" class="btn btn-outline">Her Story</a>
+      </div>
+    </div>
+    <div class="dancer-card" data-aos="fade-up" data-aos-delay="250">
+      <!-- REPLACE: Sreyoshi's portrait photo -->
+      <img class="dancer-card-img" src="https://picsum.photos/seed/sreyoshi-portrait/600/800" alt="Sreyoshi" loading="lazy" />
+      <div class="dancer-card-body">
+        <h3>Sreyoshi</h3>
+        <p class="subtitle">Bharatanatyam Dancer</p>
+        <div class="divider"><span class="divider-icon">✦</span></div>
+        <p>Sreyoshi's passion for dance has taken her through years of rigorous training, embodying every gesture and rhythm with devotion, grace, and artistic expression.</p>
+        <a href="sreyoshi.html" class="btn btn-outline">Her Story</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Event Highlights ───────────────────────────────────────── -->
+<section class="section" style="padding-top:0">
+  <h2 class="section-title" data-aos="fade-up">The Event</h2>
+  <div class="section-divider" data-aos="fade-up"></div>
+  <div class="info-cards">
+    <div class="info-card" data-aos="fade-up" data-aos-delay="0">
+      <div class="ic-icon">📅</div>
+      <h4>Date</h4>
+      <p>April 18, 2026</p>
+    </div>
+    <div class="info-card" data-aos="fade-up" data-aos-delay="80">
+      <div class="ic-icon">🕑</div>
+      <h4>Time</h4>
+      <p>2:00 PM</p>
+    </div>
+    <div class="info-card" data-aos="fade-up" data-aos-delay="160">
+      <div class="ic-icon">📍</div>
+      <h4>Venue</h4>
+      <p>Indian Community Center</p>
+    </div>
+    <div class="info-card" data-aos="fade-up" data-aos-delay="240">
+      <div class="ic-icon">🎟️</div>
+      <h4>Admission</h4>
+      <p>Free — RSVP required</p>
+    </div>
+  </div>
+  <div style="text-align:center; margin-top:1rem" data-aos="fade-up">
+    <!-- REPLACE: set href to your actual RSVP link -->
+    <a href="#" target="_blank" rel="noopener" class="btn btn-primary">Reserve Your Seat</a>
+  </div>
+</section>
+
+<!-- ── Footer ────────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <h3>Nritya Samarpanam</h3>
+      <p class="subtitle" style="margin-bottom:0.75rem">Anitha &amp; Sreyoshi · Arangetram 2026</p>
+      <p>A celebration of devotion, artistry, and the timeless beauty of Bharatanatyam.</p>
+    </div>
+    <div class="footer-links">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="anitha.html">Anitha</a></li>
+        <li><a href="sreyoshi.html">Sreyoshi</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>More</h4>
+      <ul>
+        <li><a href="teacher.html">Our Guru</a></li>
+        <li><a href="venue.html">Venue &amp; RSVP</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Anitha &amp; Sreyoshi Nritya Samarpanam. All rights reserved.</span>
+    <span>April 18, 2026 · Indian Community Center</span>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script src="js/main.js"></script>
+<script>initMusicPlayer();</script>
+
+</body>
+</html>
