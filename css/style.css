@@ -570,7 +570,14 @@ p  { color: var(--text-secondary); margin-bottom: 1rem; }
   margin-bottom: 2rem;
 }
 .event-detail { text-align: center; }
-.event-detail .ed-icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
+.event-detail .ed-icon {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .event-detail .ed-label {
   font-family: 'Cinzel', serif;
   font-size: 0.7rem;
