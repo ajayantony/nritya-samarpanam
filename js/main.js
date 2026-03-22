@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ── Scroll hint ───────────────────────────────────────────── */
   const scrollHint = document.getElementById('scrollHint');
   if (scrollHint) {
+    setTimeout(() => scrollHint.classList.add('visible'), 2800);
     window.addEventListener('scroll', () => {
       if (window.scrollY > 80) scrollHint.classList.add('hidden');
     }, { passive: true });
