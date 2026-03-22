@@ -308,11 +308,6 @@ p  { color: var(--text-secondary); margin-bottom: 1rem; }
   margin: 1.5rem 0;
   opacity: 0;
   animation: fadeUp 1s 1.4s forwards;
-  display: inline-block;
-  background: rgba(201,168,76,0.08);
-  border: 1px solid var(--border-strong);
-  padding: 0.6rem 1.5rem;
-  border-radius: 2px;
 }
 .hero-meta .sep { margin: 0 0.75rem; color: var(--gold-dark); }
 @media (max-width: 480px) {
