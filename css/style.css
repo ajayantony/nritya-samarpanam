@@ -420,6 +420,9 @@ p  { color: var(--text-secondary); margin-bottom: 1rem; }
 }
 .profile-portrait img {
   width: 100%;
+  min-height: 520px;
+  object-fit: cover;
+  object-position: top center;
   border-radius: 2px;
   border: 1px solid var(--border);
   box-shadow: var(--shadow);
