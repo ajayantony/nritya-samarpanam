@@ -210,17 +210,18 @@ p  { color: var(--text-secondary); margin-bottom: 1rem; }
   background-size: cover;
   background-position: center top;
   opacity: 0;
-  animation: heroSlide 16s infinite;
+  animation: heroSlide 24s infinite;
   transform: scale(1.05);
 }
 .hero-slide:nth-child(1) { animation-delay: 0s; }
 .hero-slide:nth-child(2) { animation-delay: 8s; }
+.hero-slide:nth-child(3) { animation-delay: 16s; }
 
 @keyframes heroSlide {
   0%   { opacity: 0;   transform: scale(1.08); }
   5%   { opacity: 1;   transform: scale(1.05); }
-  45%  { opacity: 1;   transform: scale(1); }
-  50%  { opacity: 0;   transform: scale(0.98); }
+  28%  { opacity: 1;   transform: scale(1); }
+  33%  { opacity: 0;   transform: scale(0.98); }
   100% { opacity: 0;   transform: scale(1.08); }
 }
 
