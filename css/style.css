@@ -218,6 +218,10 @@ p  { color: var(--text-secondary); margin-bottom: 1rem; }
   transform: scale(1.05);
 }
 .hero-slide:nth-child(1) { animation-delay: 0s; }
+.hero-slide-both { background-image: url('../assets/both/both-lakshmi.jpeg'); }
+@media (max-width: 768px) {
+  .hero-slide-both { background-image: url('../assets/both/vertical/both-vertical-1.JPG'); }
+}
 .hero-slide:nth-child(2) { animation-delay: 8s; }
 .hero-slide:nth-child(3) { animation-delay: 16s; }
 
