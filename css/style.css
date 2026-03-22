@@ -152,11 +152,11 @@ p  { color: var(--text-secondary); margin-bottom: 1rem; }
 }
 .navbar-brand span {
   display: block;
-  font-size: 0.65rem;
+  font-size: 0.7rem;
   font-weight: 400;
   color: var(--text-muted);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-family: 'Raleway', sans-serif;
 }
 .navbar-links {
   display: flex;
@@ -758,7 +758,8 @@ footer {
   grid-template-columns: 2fr 1fr 1fr;
   gap: 2.5rem;
 }
-.footer-brand h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+.footer-brand h3 { font-size: 1.3rem; margin-bottom: 0.5rem; font-family: 'Cormorant Garamond', serif; font-weight: 600; letter-spacing: 0.02em; }
+.footer-brand h3 em { font-style: italic; color: var(--gold-light); }
 .footer-brand p { font-size: 0.85rem; }
 .footer-links h4 {
   font-size: 0.75rem;
