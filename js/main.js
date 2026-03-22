@@ -31,6 +31,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  /* ── Scroll hint ───────────────────────────────────────────── */
+  const scrollHint = document.getElementById('scrollHint');
+  if (scrollHint) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 80) scrollHint.classList.add('hidden');
+    }, { passive: true });
+  }
+
   /* ── AOS init ──────────────────────────────────────────────── */
   if (typeof AOS !== 'undefined') {
     AOS.init({
