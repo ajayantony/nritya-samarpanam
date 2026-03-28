@@ -217,22 +217,24 @@ p  { color: var(--text-secondary); margin-bottom: 1rem; }
   transform: scale(1.05);
   transform-origin: center bottom;
 }
-/* Desktop: child 1=slide4, child 5=duet1; children 2-4,6=mobile (hidden) */
-.hero-slide:nth-child(1) { animation-delay: 8s;  }
-.hero-slide:nth-child(2) { animation-delay: 0s;  display: none; }
-.hero-slide:nth-child(3) { animation-delay: 0s;  display: none; }
+/* Desktop: children 1–3; mobile: children 4–7 (hidden on desktop) */
+.hero-slide:nth-child(1) { animation-delay: 0s;     }
+.hero-slide:nth-child(2) { animation-delay: 5.33s;  }
+.hero-slide:nth-child(3) { animation-delay: 10.67s; }
 .hero-slide:nth-child(4) { animation-delay: 0s;  display: none; }
-.hero-slide:nth-child(5) { animation-delay: 0s;  }
+.hero-slide:nth-child(5) { animation-delay: 0s;  display: none; }
 .hero-slide:nth-child(6) { animation-delay: 0s;  display: none; }
+.hero-slide:nth-child(7) { animation-delay: 0s;  display: none; }
 @media (max-width: 768px) {
-  /* Mobile: children 2-4,6=mobile slides; children 1,5=desktop (hidden) */
+  /* Mobile: children 4–7; desktop children 1–3 (hidden) */
   .hero-slide { animation: heroSlideMobile 21.33s linear infinite; }
   .hero-slide:nth-child(1) { display: none; }
-  .hero-slide:nth-child(2) { display: block; animation-delay: 0s;     }
-  .hero-slide:nth-child(3) { display: block; animation-delay: 5.33s;  }
-  .hero-slide:nth-child(4) { display: block; animation-delay: 10.67s; }
-  .hero-slide:nth-child(5) { display: none; }
-  .hero-slide:nth-child(6) { display: block; animation-delay: 16s;    }
+  .hero-slide:nth-child(2) { display: none; }
+  .hero-slide:nth-child(3) { display: none; }
+  .hero-slide:nth-child(4) { display: block; animation-delay: 0s;     }
+  .hero-slide:nth-child(5) { display: block; animation-delay: 5.33s;  }
+  .hero-slide:nth-child(6) { display: block; animation-delay: 10.67s; }
+  .hero-slide:nth-child(7) { display: block; animation-delay: 16s;    }
 }
 
 /* Mobile: 4 slides × 5.33s = 21.33s. Each slot = 25% */
@@ -243,12 +245,12 @@ p  { color: var(--text-secondary); margin-bottom: 1rem; }
   28%   { opacity: 0;   transform: scale(1.06); }
   100%  { opacity: 0;   transform: scale(1); }
 }
-/* Desktop: 2 slides × 8s = 16s. Each slot = 50% */
+/* Desktop: 3 slides × 5.33s = 16s. Each slot = 33.3% */
 @keyframes heroSlideDesktop {
   0%    { opacity: 0;   transform: scale(1); }
   8%    { opacity: 1;   transform: scale(1.01); }
-  42%   { opacity: 1;   transform: scale(1.07); }
-  50%   { opacity: 0;   transform: scale(1.08); }
+  25%   { opacity: 1;   transform: scale(1.05); }
+  37%   { opacity: 0;   transform: scale(1.06); }
   100%  { opacity: 0;   transform: scale(1); }
 }
 
