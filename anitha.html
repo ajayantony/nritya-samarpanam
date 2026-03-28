@@ -35,7 +35,7 @@
       <li><a href="sreyoshi.html">Sreyoshi</a></li>
       <li><a href="gallery.html">Gallery</a></li>
       <li><a href="teacher.html">Our Guru</a></li>
-      <li><a href="venue.html">Venue &amp; RSVP</a></li>
+      <li><a href="venue.html">Event &amp; RSVP</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu">
       <span></span><span></span><span></span>
@@ -225,7 +225,7 @@
       <h4>More</h4>
       <ul>
         <li><a href="teacher.html">Our Guru</a></li>
-        <li><a href="venue.html">Venue &amp; RSVP</a></li>
+        <li><a href="venue.html">Event &amp; RSVP</a></li>
       </ul>
     </div>
   </div>
@@ -240,7 +240,56 @@
 <script src="js/main.js"></script>
 <script>
   GLightbox({ selector: '.glightbox' });
-  initLikeButtons();
+</script>
+<script type="module">
+  import { initializeApp, getApps } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+  import { getFirestore, doc, setDoc, increment, onSnapshot } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
+  const app = getApps().length ? getApps()[0] : initializeApp({
+    apiKey: "AIzaSyAzK7y4hoL7Lb7DG7NLOMj4greyeBfW_pU",
+    authDomain: "nritya-samarpanam.firebaseapp.com",
+    projectId: "nritya-samarpanam",
+    storageBucket: "nritya-samarpanam.firebasestorage.app",
+    messagingSenderId: "297153483200",
+    appId: "1:297153483200:web:21957d2d4c8010321e3825"
+  });
+  const db = getFirestore(app);
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    const img = item.querySelector('img');
+    if (!img) return;
+    const photoId = img.src.split('/').pop().replace(/\.[^.]+$/, '');
+    const liked = localStorage.getItem('like_' + photoId) === '1';
+    const btn = document.createElement('button');
+    btn.className = 'like-btn' + (liked ? ' liked' : '');
+    btn.setAttribute('aria-label', 'Like this photo');
+    const HEART_OUTLINE = `<svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`;
+    const HEART_FILLED  = `<svg viewBox="0 0 24 24" width="10" height="10" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`;
+    const heart = document.createElement('span');
+    heart.className = 'like-heart';
+    heart.innerHTML = liked ? HEART_FILLED : HEART_OUTLINE;
+    const countEl = document.createElement('span');
+    countEl.className = 'like-count';
+    btn.appendChild(heart);
+    btn.appendChild(countEl);
+    item.style.position = 'relative';
+    item.appendChild(btn);
+    const docRef = doc(db, 'likes', photoId);
+    onSnapshot(docRef, (snap) => {
+      const count = snap.exists() ? (snap.data().count || 0) : 0;
+      countEl.textContent = count > 0 ? count : '';
+      btn.classList.toggle('has-count', count > 0);
+    });
+    btn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const isLiked = btn.classList.toggle('liked');
+      heart.innerHTML = isLiked ? HEART_FILLED : HEART_OUTLINE;
+      localStorage.setItem('like_' + photoId, isLiked ? '1' : '0');
+      if (isLiked && typeof gtag !== 'undefined') gtag('event', 'photo_like', { photo_id: photoId });
+      try {
+        await setDoc(docRef, { count: increment(isLiked ? 1 : -1) }, { merge: true });
+      } catch (err) { console.error('Error updating like:', err); }
+    });
+  });
 </script>
 
 </body>
