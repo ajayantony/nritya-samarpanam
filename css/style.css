@@ -573,6 +573,27 @@ p  { color: var(--text-secondary); margin-bottom: 1rem; }
 }
 .gallery-item:hover { border-color: var(--border-strong); transform: scale(1.01); box-shadow: 0 4px 20px rgba(201,168,76,0.2); }
 .gallery-item img { width: 100%; display: block; transition: transform 0.5s; }
+.like-btn {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  background: rgba(13,10,7,0.6);
+  border: 1px solid rgba(201,168,76,0.3);
+  border-radius: 50%;
+  width: 1.4rem;
+  height: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.65rem;
+  line-height: 1;
+  transition: transform 0.2s, background 0.2s;
+  z-index: 2;
+}
+.like-btn { color: #fff; border-color: rgba(255,255,255,0.6); }
+.like-btn:hover { transform: scale(1.2); background: rgba(13,10,7,0.85); border-color: #fff; }
+.like-btn.liked { color: #e05; border-color: #e05; }
 .gallery-item:hover img { transform: scale(1.04); }
 
 /* ── Teacher Card ───────────────────────────────────────────── */

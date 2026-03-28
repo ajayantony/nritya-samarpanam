@@ -108,6 +108,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
+/* ── Photo like buttons ────────────────────────────────────────── */
+function initLikeButtons() {
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    const img = item.querySelector('img');
+    if (!img) return;
+
+    // Derive a stable ID from the image src filename
+    const photoId = img.src.split('/').pop().replace(/\.[^.]+$/, '');
+
+    const btn = document.createElement('button');
+    btn.className = 'like-btn';
+    btn.setAttribute('aria-label', 'Like this photo');
+    btn.textContent = '♡';
+
+    // Restore liked state from localStorage
+    if (localStorage.getItem('like_' + photoId) === '1') {
+      btn.classList.add('liked');
+      btn.textContent = '♥';
+    }
+
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const liked = btn.classList.toggle('liked');
+      btn.textContent = liked ? '♥' : '♡';
+      localStorage.setItem('like_' + photoId, liked ? '1' : '0');
+      if (liked && typeof gtag !== 'undefined') {
+        gtag('event', 'photo_like', { photo_id: photoId });
+      }
+    });
+
+    item.style.position = 'relative';
+    item.appendChild(btn);
+  });
+}
+
 /* ── Music Player (index.html only) ───────────────────────────── */
 function initMusicPlayer() {
   const audio     = document.getElementById('bgMusic');
