@@ -224,9 +224,8 @@ p  { color: var(--text-secondary); margin-bottom: 1rem; }
 .hero-slide:nth-child(5) { animation-delay: 10.67s; display: none; }
 .hero-slide:nth-child(6) { animation-delay: 10.67s; }
 .hero-slide:nth-child(7) { animation-delay: 0s; display: none; }
-.hero-slide:nth-child(8) { animation-delay: 0s; display: none; }
 @media (max-width: 768px) {
-  .hero-slide { animation: heroSlideMobile 26.65s linear infinite; }
+  .hero-slide { animation: heroSlideMobile 21.33s linear infinite; }
   .hero-slide:nth-child(1) { display: none; }
   .hero-slide:nth-child(2) { display: none; }
   .hero-slide:nth-child(3) { display: block; animation-delay: 0s;    }
@@ -234,22 +233,21 @@ p  { color: var(--text-secondary); margin-bottom: 1rem; }
   .hero-slide:nth-child(5) { display: block; animation-delay: 10.67s; }
   .hero-slide:nth-child(6) { display: none; }
   .hero-slide:nth-child(7) { display: block; animation-delay: 16s;   }
-  .hero-slide:nth-child(8) { display: block; animation-delay: 21.33s; }
 }
 
-/* Mobile: 5 slides × 5.33s = 26.65s. Each slot = 20% */
+/* Mobile: 4 slides × 5.33s = 21.33s. Each slot = 25% */
 @keyframes heroSlideMobile {
   0%    { opacity: 0;   transform: scale(1); }
-  1.5%  { opacity: 1;   transform: scale(1.01); }
-  20%   { opacity: 1;   transform: scale(1.07); }
-  23%   { opacity: 0;   transform: scale(1.08); }
+  6%    { opacity: 1;   transform: scale(1.01); }
+  22%   { opacity: 1;   transform: scale(1.07); }
+  28%   { opacity: 0;   transform: scale(1.08); }
   100%  { opacity: 0;   transform: scale(1); }
 }
-/* Desktop: 3 slides × 8s = 24s. Each slot = 33.3% */
+/* Desktop: 3 slides × 5.33s = 16s. Each slot = 33.3% */
 @keyframes heroSlideDesktop {
   0%    { opacity: 0;   transform: scale(1); }
-  2%    { opacity: 1;   transform: scale(1.01); }
-  33%   { opacity: 1;   transform: scale(1.07); }
+  8%    { opacity: 1;   transform: scale(1.01); }
+  29%   { opacity: 1;   transform: scale(1.07); }
   37%   { opacity: 0;   transform: scale(1.08); }
   100%  { opacity: 0;   transform: scale(1); }
 }
