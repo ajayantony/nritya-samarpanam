@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FJ2J5PQE3Z"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-FJ2J5PQE3Z');
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guest Book — Nritya Samarpanam 2026</title>
+  <meta name="description" content="Sign the guest book and send your congratulations to Anitha and Sreyoshi for their Bharatanrityam Arangetram — Nritya Samarpanam 2026." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Raleway:wght@300;400;500;600&display=swap" crossorigin />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" integrity="sha384-/rJKQnzOkEo+daG0jMjU1IwwY9unxt1NBw3Ef2fmOJ3PW/TfAg2KXVoWwMZQZtw9" crossorigin="anonymous" />
+</head>
+<body>
+
+<!-- ── Navbar ────────────────────────────────────────────────── -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="navbar-brand">
+      Nritya <em>Samarpanam</em>
+      <span>Anitha &amp; Sreyoshi · 2026</span>
+    </a>
+    <ul class="navbar-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="anitha.html">Anitha</a></li>
+      <li><a href="sreyoshi.html">Sreyoshi</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="teacher.html">Our Guru</a></li>
+      <li><a href="venue.html">Event &amp; RSVP</a></li>
+      <li><a href="wishes.html">Guest Book</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ── Wishes ────────────────────────────────────────────────── -->
+<section class="section" style="padding-top:110px;" id="wishes">
+  <h2 class="section-title" data-aos="fade-up">Guest Book</h2>
+  <div class="section-divider" data-aos="fade-up"></div>
+  <p class="subtitle" style="text-align:center; margin-bottom:2rem" data-aos="fade-up">Share your congratulations and best wishes for Anitha and Sreyoshi</p>
+
+  <div class="wishes-form" data-aos="fade-up">
+    <form id="wishForm">
+      <input type="text" id="wishName" placeholder="Your name" required maxlength="60" />
+      <textarea id="wishMessage" placeholder="Your message..." required maxlength="500" rows="3"></textarea>
+      <button type="submit" class="btn btn-primary">Send Wishes</button>
+      <p id="wishSuccess" style="display:none; color:var(--gold); text-align:center; margin-top:1rem; font-family:'Raleway',sans-serif;">Your wishes have been sent!</p>
+    </form>
+  </div>
+
+  <div class="wishes-list" id="wishesList">
+    <p class="wishes-empty">Be the first to leave a wish!</p>
+  </div>
+</section>
+
+<!-- ── Footer ────────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <h3>Nritya <em>Samarpanam</em></h3>
+      <p class="subtitle" style="margin-bottom:0.75rem">Anitha &amp; Sreyoshi · Arangetram 2026</p>
+      <p>A celebration of devotion, artistry, and the timeless beauty of Bharatanrityam.</p>
+    </div>
+    <div class="footer-links">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="anitha.html">Anitha</a></li>
+        <li><a href="sreyoshi.html">Sreyoshi</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>More</h4>
+      <ul>
+        <li><a href="teacher.html">Our Guru</a></li>
+        <li><a href="venue.html">Event &amp; RSVP</a></li>
+        <li><a href="wishes.html">Guest Book</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Anitha &amp; Sreyoshi Nritya Samarpanam. All rights reserved.</span>
+    <span>April 18, 2026 · India Community Center</span>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js" integrity="sha384-n1AULnKdMJlK1oQCLNDL9qZsDgXtH6jRYFCpBtWFc+a9Yve0KSoMn575rk755NJZ" crossorigin="anonymous"></script>
+<script src="js/main.js"></script>
+
+<!-- Firebase Wishes -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
+  import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, limit, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
+
+  const app = initializeApp({
+    apiKey: "AIzaSyAzK7y4hoL7Lb7DG7NLOMj4greyeBfW_pU",
+    authDomain: "nritya-samarpanam.firebaseapp.com",
+    projectId: "nritya-samarpanam",
+    storageBucket: "nritya-samarpanam.firebasestorage.app",
+    messagingSenderId: "297153483200",
+    appId: "1:297153483200:web:21957d2d4c8010321e3825"
+  });
+  const db = getFirestore(app);
+
+  function escapeHtml(str) {
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  // Submit wish
+  document.getElementById('wishForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name    = document.getElementById('wishName').value.trim();
+    const message = document.getElementById('wishMessage').value.trim();
+    if (!name || !message) return;
+    const btn = e.target.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    try {
+      await addDoc(collection(db, 'wishes'), { name, message, timestamp: serverTimestamp() });
+      e.target.reset();
+      const success = document.getElementById('wishSuccess');
+      success.style.display = 'block';
+      setTimeout(() => success.style.display = 'none', 4000);
+    } catch (err) {
+      console.error('Error sending wish:', err);
+    }
+    btn.disabled = false;
+  });
+
+  // Display wishes in real-time
+  const q = query(collection(db, 'wishes'), orderBy('timestamp', 'desc'), limit(50));
+  onSnapshot(q, (snapshot) => {
+    const list = document.getElementById('wishesList');
+    if (snapshot.empty) {
+      list.innerHTML = '<p class="wishes-empty">Be the first to leave a wish!</p>';
+      return;
+    }
+    list.innerHTML = '';
+    snapshot.forEach((doc) => {
+      const { name, message, timestamp } = doc.data();
+      const date = timestamp
+        ? new Date(timestamp.seconds * 1000).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
+        : '';
+      const card = document.createElement('div');
+      card.className = 'wish-card';
+      card.innerHTML = `
+        <div class="wish-card-name">${escapeHtml(name)}</div>
+        <div class="wish-card-message">${escapeHtml(message)}</div>
+        ${date ? `<div class="wish-card-time">${date}</div>` : ''}
+      `;
+      list.appendChild(card);
+    });
+  });
+</script>
+
+</body>
+</html>
