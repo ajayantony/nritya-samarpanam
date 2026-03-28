@@ -53,8 +53,13 @@
     <form id="wishForm">
       <input type="text" id="wishName" placeholder="Your name" required maxlength="60" />
       <textarea id="wishMessage" placeholder="Your message..." required maxlength="500" rows="3"></textarea>
+      <!-- Honeypot: hidden from real users; bots fill this in -->
+      <div style="position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden;pointer-events:none;" aria-hidden="true">
+        <label for="website">Website</label>
+        <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+      </div>
       <button type="submit" class="btn btn-primary">Send Wishes</button>
-      <p id="wishSuccess" style="display:none; color:var(--gold); text-align:center; margin-top:1rem; font-family:'Raleway',sans-serif;">Your wishes have been sent!</p>
+      <p id="wishSuccess" style="display:none; color:var(--gold); text-align:center; margin-top:1rem; font-family:'Raleway',sans-serif;">Your wishes have been sent! It will appear once reviewed.</p>
     </form>
   </div>
 
@@ -102,7 +107,7 @@
 <!-- Firebase Wishes -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
-  import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, limit, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
+  import { getFirestore, collection, addDoc, onSnapshot, query, where, orderBy, limit, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
 
   const app = initializeApp({
     apiKey: "AIzaSyAzK7y4hoL7Lb7DG7NLOMj4greyeBfW_pU",
@@ -126,7 +131,21 @@
     if (!name || !message) return;
     const btn = e.target.querySelector('button[type="submit"]');
     btn.disabled = true;
+
+    // Honeypot check — bots fill this field, real users don't
+    const honeypot = document.getElementById('website').value;
+    if (honeypot) {
+      // Silently fake success without writing to Firestore
+      e.target.reset();
+      const success = document.getElementById('wishSuccess');
+      success.style.display = 'block';
+      setTimeout(() => success.style.display = 'none', 4000);
+      btn.disabled = false;
+      return;
+    }
+
     try {
+      // approved field intentionally omitted — entries are hidden until approved in Firebase console
       await addDoc(collection(db, 'wishes'), { name, message, timestamp: serverTimestamp() });
       e.target.reset();
       const success = document.getElementById('wishSuccess');
@@ -138,8 +157,8 @@
     btn.disabled = false;
   });
 
-  // Display wishes in real-time
-  const q = query(collection(db, 'wishes'), orderBy('timestamp', 'desc'), limit(50));
+  // Display only approved wishes
+  const q = query(collection(db, 'wishes'), where('approved', '==', true), orderBy('timestamp', 'desc'), limit(50));
   onSnapshot(q, (snapshot) => {
     const list = document.getElementById('wishesList');
     if (snapshot.empty) {
