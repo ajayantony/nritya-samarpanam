@@ -659,6 +659,9 @@ p  { color: var(--text-secondary); margin-bottom: 1rem; }
   margin: 0 auto;
   padding: 70px 2rem;
 }
+.venue-section h2,
+.venue-section h3,
+.venue-section h4 { font-family: 'Cormorant Garamond', serif; }
 .event-details-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
