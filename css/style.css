@@ -213,21 +213,45 @@ p  { color: var(--text-secondary); margin-bottom: 1rem; }
   background-size: cover;
   background-position: center top;
   opacity: 0;
-  animation: heroSlide 32s infinite;
+  animation: heroSlideDesktop 16s linear infinite;
   transform: scale(1.05);
   transform-origin: center bottom;
 }
-.hero-slide:nth-child(1) { animation-delay: 0s;  }
-.hero-slide:nth-child(2) { animation-delay: 8s;  }
-.hero-slide:nth-child(3) { animation-delay: 16s; }
-.hero-slide:nth-child(4) { animation-delay: 24s; }
+.hero-slide:nth-child(1) { animation-delay: 0s;    }
+.hero-slide:nth-child(2) { animation-delay: 5.33s; }
+.hero-slide:nth-child(3) { animation-delay: 10.67s; display: none; }
+.hero-slide:nth-child(4) { animation-delay: 10.67s; display: none; }
+.hero-slide:nth-child(5) { animation-delay: 10.67s; display: none; }
+.hero-slide:nth-child(6) { animation-delay: 10.67s; }
+.hero-slide:nth-child(7) { animation-delay: 0s; display: none; }
+.hero-slide:nth-child(8) { animation-delay: 0s; display: none; }
+@media (max-width: 768px) {
+  .hero-slide { animation: heroSlideMobile 26.65s linear infinite; }
+  .hero-slide:nth-child(1) { display: none; }
+  .hero-slide:nth-child(2) { display: none; }
+  .hero-slide:nth-child(3) { display: block; animation-delay: 0s;    }
+  .hero-slide:nth-child(4) { display: block; animation-delay: 5.33s; }
+  .hero-slide:nth-child(5) { display: block; animation-delay: 10.67s; }
+  .hero-slide:nth-child(6) { display: none; }
+  .hero-slide:nth-child(7) { display: block; animation-delay: 16s;   }
+  .hero-slide:nth-child(8) { display: block; animation-delay: 21.33s; }
+}
 
-@keyframes heroSlide {
-  0%   { opacity: 0;   transform: scale(1.08); }
-  5%   { opacity: 1;   transform: scale(1.05); }
-  21%  { opacity: 1;   transform: scale(1); }
-  25%  { opacity: 0;   transform: scale(0.98); }
-  100% { opacity: 0;   transform: scale(1.08); }
+/* Mobile: 5 slides × 5.33s = 26.65s. Each slot = 20% */
+@keyframes heroSlideMobile {
+  0%    { opacity: 0;   transform: scale(1); }
+  1.5%  { opacity: 1;   transform: scale(1.01); }
+  20%   { opacity: 1;   transform: scale(1.07); }
+  23%   { opacity: 0;   transform: scale(1.08); }
+  100%  { opacity: 0;   transform: scale(1); }
+}
+/* Desktop: 3 slides × 8s = 24s. Each slot = 33.3% */
+@keyframes heroSlideDesktop {
+  0%    { opacity: 0;   transform: scale(1); }
+  2%    { opacity: 1;   transform: scale(1.01); }
+  33%   { opacity: 1;   transform: scale(1.07); }
+  37%   { opacity: 0;   transform: scale(1.08); }
+  100%  { opacity: 0;   transform: scale(1); }
 }
 
 .hero-overlay {
