@@ -807,6 +807,69 @@ p  { color: var(--text-secondary); margin-bottom: 1rem; }
   color: var(--text-muted);
 }
 
+/* ── Wishes section ─────────────────────────────────────────── */
+.wishes-form {
+  max-width: 600px;
+  margin: 0 auto 3rem;
+}
+.wishes-form input,
+.wishes-form textarea {
+  width: 100%;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+.wishes-form input::placeholder,
+.wishes-form textarea::placeholder { color: var(--text-muted); }
+.wishes-form input:focus,
+.wishes-form textarea:focus { outline: none; border-color: var(--gold); }
+.wishes-form textarea { resize: vertical; }
+.wishes-form .btn { width: 100%; }
+.wishes-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.wish-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1.25rem;
+}
+.wish-card-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+.wish-card-message {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+.wish-card-time {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 0.75rem;
+  font-family: 'Raleway', sans-serif;
+}
+.wishes-empty {
+  text-align: center;
+  color: var(--text-muted);
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.9rem;
+  grid-column: 1/-1;
+}
+
 /* ── Footer ─────────────────────────────────────────────────── */
 footer {
   background: var(--bg-secondary);
