@@ -135,7 +135,7 @@ function initMusicPlayer() {
   audio.currentTime = 2;
   audio.loop = false;
   audio.addEventListener('timeupdate', () => {
-    if (audio.currentTime >= 42) audio.currentTime = 0;
+    if (audio.currentTime >= 44) audio.currentTime = 2;
   });
 
   // Attempt autoplay
