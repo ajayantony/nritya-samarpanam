@@ -132,7 +132,7 @@ function initMusicPlayer() {
   }
 
   // Loop only the first 45 seconds of the track
-  audio.currentTime = 0;
+  audio.currentTime = 2;
   audio.loop = false;
   audio.addEventListener('timeupdate', () => {
     if (audio.currentTime >= 42) audio.currentTime = 0;
