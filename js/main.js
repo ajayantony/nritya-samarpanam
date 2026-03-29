@@ -118,31 +118,30 @@ function initMusicPlayer() {
 
   if (!audio || !musicBtn) return;
 
+  // Hide the click-to-play prompt permanently
+  if (prompt) prompt.style.display = 'none';
+
   let isPlaying = false;
 
   function setPlaying(state) {
     isPlaying = state;
     musicIcon.textContent = state ? '🔊' : '🔇';
-    if (prompt) prompt.style.display = state ? 'none' : 'block';
     musicBtn.style.boxShadow = state
       ? '0 0 25px rgba(201,168,76,0.7)'
       : '0 0 20px rgba(201,168,76,0.4)';
   }
 
-  // Start 10 seconds into the track
-  audio.currentTime = 10;
+  // Loop only the first 45 seconds of the track
+  audio.currentTime = 0;
+  audio.loop = false;
+  audio.addEventListener('timeupdate', () => {
+    if (audio.currentTime >= 45) audio.currentTime = 0;
+  });
 
   // Attempt autoplay
-  const playPromise = audio.play();
-  if (playPromise !== undefined) {
-    playPromise
-      .then(() => setPlaying(true))
-      .catch(() => {
-        // Autoplay blocked — show prompt
-        setPlaying(false);
-        if (prompt) prompt.style.display = 'block';
-      });
-  }
+  audio.play()
+    .then(() => setPlaying(true))
+    .catch(() => setPlaying(false));
 
   musicBtn.addEventListener('click', () => {
     if (isPlaying) {
