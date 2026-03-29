@@ -466,6 +466,7 @@ p  { color: var(--text-secondary); margin-bottom: 1rem; }
   height: 380px;
   object-fit: cover;
   object-position: top;
+  object-position: top;
   filter: grayscale(20%) brightness(0.9);
   transition: filter var(--transition);
 }
