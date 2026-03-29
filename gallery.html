@@ -402,6 +402,28 @@
 <script src="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/js/glightbox.min.js" integrity="sha384-/+Fc1LD6ksHYZ+2MChiSfjEXBcl4q2axUWhs6/CdnfqY5aLmrPwtysVzyeP0s60b" crossorigin="anonymous"></script>
 <script src="js/main.js"></script>
 <script>
+  // Randomise only for "All Photos"; restore original order for other filters
+  const galleryGrid = document.querySelector('.gallery-grid');
+  const originalOrder = [...galleryGrid.querySelectorAll('.gallery-item')];
+
+  function shuffleGrid() {
+    [...originalOrder].sort(() => Math.random() - 0.5).forEach(item => galleryGrid.appendChild(item));
+  }
+  function restoreGrid() {
+    originalOrder.forEach(item => galleryGrid.appendChild(item));
+  }
+
+  // Shuffle on load (All Photos is active by default)
+  shuffleGrid();
+
+  // Reshuffle on "all", restore order on other filters
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (btn.dataset.filter === 'all') shuffleGrid();
+      else restoreGrid();
+    });
+  });
+
   GLightbox({ selector: '.glightbox' });
 </script>
 <script type="module">

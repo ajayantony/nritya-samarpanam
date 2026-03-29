@@ -131,21 +131,32 @@ function initMusicPlayer() {
       : '0 0 20px rgba(201,168,76,0.4)';
   }
 
-  // Loop only the first 45 seconds of the track
-  audio.currentTime = 2;
   audio.loop = false;
+
+  // Keep within 2–55s window; fire on timeupdate and as a fallback on ended
   audio.addEventListener('timeupdate', () => {
-    if (audio.currentTime >= 44) audio.currentTime = 2;
+    if (audio.currentTime >= 55) audio.currentTime = 2;
+  });
+  audio.addEventListener('ended', () => {
+    audio.currentTime = 2;
+    audio.play().catch(() => {});
   });
 
+  // On iOS audio isn't seekable until after play() resolves — seek inside .then()
+  function startPlay() {
+    return audio.play().then(() => {
+      audio.currentTime = 2;
+    });
+  }
+
   // Attempt autoplay
-  audio.play()
+  startPlay()
     .then(() => setPlaying(true))
     .catch(() => {
       // Autoplay blocked — start on first user interaction
       setPlaying(false);
       function tryPlay() {
-        audio.play().then(() => setPlaying(true)).catch(() => {});
+        startPlay().then(() => setPlaying(true)).catch(() => {});
         document.removeEventListener('click', tryPlay);
       }
       document.addEventListener('click', tryPlay);
@@ -156,7 +167,7 @@ function initMusicPlayer() {
       audio.pause();
       setPlaying(false);
     } else {
-      audio.play()
+      startPlay()
         .then(() => setPlaying(true))
         .catch(() => setPlaying(false));
     }
