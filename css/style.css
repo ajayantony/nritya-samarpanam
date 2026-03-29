@@ -532,6 +532,9 @@ p  { color: var(--text-secondary); margin-bottom: 1rem; }
 }
 .bio-detail-value { color: var(--text-secondary); }
 
+/* ── GLightbox overrides ────────────────────────────────────── */
+.gslide-description { display: none !important; }
+
 /* ── Gallery Grid ───────────────────────────────────────────── */
 .gallery-filters {
   display: flex;
