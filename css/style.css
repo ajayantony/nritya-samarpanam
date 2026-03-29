@@ -785,7 +785,7 @@ p  { color: var(--text-secondary); margin-bottom: 1rem; }
   flex-direction: column;
   align-items: center;
 }
-.info-card .ic-icon { font-size: 1.5rem; margin: 0 auto 0.75rem; color: var(--gold); height: 2.5rem; width: 2.5rem; display: flex; align-items: center; justify-content: center; }
+.info-card .ic-icon { font-size: 1.5rem; margin: 0 auto 0.75rem; color: var(--gold); height: 2.5rem; width: 2.5rem; min-width: 2.5rem; max-width: 2.5rem; flex-shrink: 0; box-sizing: border-box; display: flex; align-items: center; justify-content: center; }
 .info-card h4 { margin-bottom: 0.35rem; font-size: 0.9rem; }
 .info-card p { font-size: 0.85rem; margin: 0; }
 
