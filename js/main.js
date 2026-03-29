@@ -135,13 +135,21 @@ function initMusicPlayer() {
   audio.currentTime = 0;
   audio.loop = false;
   audio.addEventListener('timeupdate', () => {
-    if (audio.currentTime >= 45) audio.currentTime = 0;
+    if (audio.currentTime >= 42) audio.currentTime = 0;
   });
 
   // Attempt autoplay
   audio.play()
     .then(() => setPlaying(true))
-    .catch(() => setPlaying(false));
+    .catch(() => {
+      // Autoplay blocked — start on first user interaction
+      setPlaying(false);
+      function tryPlay() {
+        audio.play().then(() => setPlaying(true)).catch(() => {});
+        document.removeEventListener('click', tryPlay);
+      }
+      document.addEventListener('click', tryPlay);
+    });
 
   musicBtn.addEventListener('click', () => {
     if (isPlaying) {

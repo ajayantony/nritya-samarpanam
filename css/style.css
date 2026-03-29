@@ -361,9 +361,7 @@ p  { color: var(--text-secondary); margin-bottom: 1rem; }
   pointer-events: none;
   white-space: nowrap;
 }
-.scroll-hint.visible { animation: scrollBounce 2s ease-in-out infinite; opacity: 0.7; }
-.scroll-hint.hidden  { opacity: 0 !important; animation: none; }
-@media (max-width: 768px) { .scroll-hint { display: none; } }
+.scroll-hint { display: none; }
 @keyframes scrollBounce {
   0%, 100% { transform: translateX(-50%) translateY(0); }
   50%       { transform: translateX(-50%) translateY(8px); }
