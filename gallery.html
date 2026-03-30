@@ -409,15 +409,27 @@
   // Shuffle on load (All Photos is active by default)
   shuffleGrid();
 
-  // Reshuffle on "all", restore order on other filters
+  // Reinitialize GLightbox respecting the active filter
+  let lightbox = GLightbox({ selector: '.glightbox' });
+
+  function reinitLightbox(filter) {
+    lightbox.destroy();
+    const selector = filter === 'all'
+      ? '.glightbox'
+      : `.gallery-item[data-dancer="${filter}"] a.glightbox`;
+    lightbox = GLightbox({ selector });
+  }
+
+  // Reshuffle on "all", restore order on other filters, then reinit lightbox
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      if (btn.dataset.filter === 'all') shuffleGrid();
+      const filter = btn.dataset.filter;
+      if (filter === 'all') shuffleGrid();
       else restoreGrid();
+      // Slight delay so show/hide from main.js completes first
+      setTimeout(() => reinitLightbox(filter), 20);
     });
   });
-
-  GLightbox({ selector: '.glightbox' });
 </script>
 <script type="module">
   import { initializeApp, getApps } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
